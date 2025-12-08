@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Test AR mínimo</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    html, body { height:100%; margin:0; }
+    model-viewer { width:100%; height:100%; background:#111; }
+  </style>
+</head>
+<body>
+
+  <model-viewer
+     src="nacimiento.glb"
+     ios-src="nacimiento.usdz"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    camera-controls
+    alt="Nacimiento AR">
+  </model-viewer>
+</body>
+</html>
