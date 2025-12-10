@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Proyecto de Navidad</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="contenido-principal">
+    <h1>Proyecto de Navidad 🎄</h1>
+    <p>
+      Aquí iría el contenido principal del proyecto.<br>
+      Tu módulo es este reproductor de música a la derecha.
+    </p>
+  </main>
+
+  <!-- WRAPPER DEL REPRODUCTOR + PESTAÑA (SE MUEVEN JUNTOS) -->
+  <div id="musicWrapper" class="music-wrapper">
+    <!-- PESTAÑA LATERAL PEGADA AL PANEL -->
+    <div class="music-toggle" onclick="togglePlayer()">
+      🎵 Música
+    </div>
+
+    <!-- TARJETA DEL REPRODUCTOR -->
+    <div class="player-card">
+      <div class="player-header">
+        <span>🎄 Fondos Navideños</span>
+
+        <!-- BOTÓN DE GRUPO / IDIOMA -->
+        <button id="btnGrupo" class="group-button" type="button">
+          Inglés
+        </button>
+      </div>
+
+      <div class="cover-container">
+        <img
+          id="portadaCancion"
+          src="img/jingle-bell-rock.jpg"
+          alt="Portada de la canción"
+        />
+      </div>
+
+      <p class="now-playing">
+        Reproduciendo:<br />
+        <span id="nombreCancion">Bobby Helms - Jingle Bell Rock</span>
+      </p>
+
+      <!-- Audio oculto (lo controlamos con JS) -->
+      <audio id="player"></audio>
+
+      <div class="player-controls">
+        <button id="btnPrev" title="Canción anterior">⏮</button>
+        <button id="btnPlay" title="Reproducir / Pausar">▶️</button>
+        <button id="btnNext" title="Siguiente canción">⏭</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
