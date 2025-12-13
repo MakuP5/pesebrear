@@ -1,0 +1,45 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+
+# Visual Studio cache
+.vscode/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Crash reports
+sysinfo.txt
+
+# Ignore Asset Store tools
+Assets/AssetStoreTools*
+
+# Ignore build artifacts
+*.apk
+*.aab
+*.ipa
+*.exe
+*.app
+
+# Ignore Unity cache server
+Cache/
+
+# Ignore addressables build
+Assets/AddressableAssetsData/*
+
+# Ignore Unity Collaborate
+.collab/
+
+# Ignore packages lock
+Packages/packages-lock.json
