@@ -28,7 +28,7 @@ scene.add(floor);
 
 // Modelo
 const loader = new GLTFLoader();
-loader.load('modelo.glb', gltf => {
+loader.load('../modelos/pesebre.glb', gltf => {
   gltf.scene.position.set(0, 0, -2);
   scene.add(gltf.scene);
 });
