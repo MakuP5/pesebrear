@@ -3,100 +3,178 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Galería Navideña – Personajes del Nacimiento (AR)</title>
+  <title>Galería Navideña – Personajes del Nacimiento (UPS + AR)</title>
 </head>
 
 <body style="margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Helvetica,Arial;background:#070b10;color:#eef5ff;">
 
-  <!-- Fondo navideño -->
+  <!-- ==========================================================
+    CONFIG RÁPIDA (edita solo aquí)
+    - Reemplaza IMG_* por tus rutas (jpg/png/webp) o URLs
+    - Reemplaza AR_LINK_* por tus páginas AR
+    Colores:
+    - UPS (aprox): Azul #0033A0 / Dorado #FFC72C
+    - Navidad: Rojo #D72638 / Verde #2ECC71
+  =========================================================== -->
+
+  <!-- Fondo / decoración -->
   <div style="
     position:fixed;inset:0;z-index:-1;
     background:
-      radial-gradient(900px 500px at 10% 0%, rgba(255,209,102,.16), transparent 55%),
-      radial-gradient(900px 520px at 90% 20%, rgba(86,255,184,.12), transparent 60%),
-      radial-gradient(700px 420px at 50% 100%, rgba(120,153,255,.10), transparent 55%),
+      radial-gradient(950px 520px at 10% 0%, rgba(255,199,44,.20), transparent 58%),
+      radial-gradient(900px 520px at 90% 20%, rgba(46,204,113,.14), transparent 62%),
+      radial-gradient(900px 520px at 60% 110%, rgba(0,51,160,.18), transparent 58%),
+      radial-gradient(700px 420px at 30% 90%, rgba(215,38,56,.12), transparent 55%),
       linear-gradient(180deg, #05070b 0%, #070b10 35%, #060a10 100%);
+  "></div>
+
+  <!-- “Luces” navideñas -->
+  <div style="
+    position:fixed;left:0;right:0;top:0;z-index:-1;
+    height:92px;
+    background:
+      radial-gradient(circle at 6% 55%, rgba(255,199,44,.9) 0 3px, transparent 4px),
+      radial-gradient(circle at 14% 35%, rgba(46,204,113,.85) 0 3px, transparent 4px),
+      radial-gradient(circle at 22% 55%, rgba(215,38,56,.85) 0 3px, transparent 4px),
+      radial-gradient(circle at 30% 35%, rgba(120,153,255,.85) 0 3px, transparent 4px),
+      radial-gradient(circle at 38% 55%, rgba(255,199,44,.9) 0 3px, transparent 4px),
+      radial-gradient(circle at 46% 35%, rgba(46,204,113,.85) 0 3px, transparent 4px),
+      radial-gradient(circle at 54% 55%, rgba(215,38,56,.85) 0 3px, transparent 4px),
+      radial-gradient(circle at 62% 35%, rgba(120,153,255,.85) 0 3px, transparent 4px),
+      radial-gradient(circle at 70% 55%, rgba(255,199,44,.9) 0 3px, transparent 4px),
+      radial-gradient(circle at 78% 35%, rgba(46,204,113,.85) 0 3px, transparent 4px),
+      radial-gradient(circle at 86% 55%, rgba(215,38,56,.85) 0 3px, transparent 4px),
+      radial-gradient(circle at 94% 35%, rgba(120,153,255,.85) 0 3px, transparent 4px);
+    opacity:.85;
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,.65));
   "></div>
 
   <!-- Encabezado -->
   <header style="
-    max-width:1100px;margin:22px auto 10px;padding:18px 18px 16px;
+    max-width:1140px;margin:22px auto 12px;padding:18px 18px 16px;
     border:1px solid rgba(255,255,255,.12);
-    border-radius:18px;
-    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-    box-shadow:0 18px 60px rgba(0,0,0,.45);
-    backdrop-filter: blur(10px);
+    border-radius:20px;
+    background:
+      radial-gradient(900px 260px at 10% 0%, rgba(255,199,44,.18), transparent 65%),
+      radial-gradient(900px 260px at 95% 0%, rgba(0,51,160,.22), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    box-shadow:0 22px 70px rgba(0,0,0,.50);
+    backdrop-filter: blur(12px);
   ">
     <div style="display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;">
       <div>
-        <div style="display:inline-flex;align-items:center;gap:10px;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#b9c7dd;font-weight:800;font-size:12px;letter-spacing:.6px;">
-          🎄 GALERÍA • NACIMIENTO • AR
+        <div style="
+          display:inline-flex;align-items:center;gap:10px;
+          padding:8px 12px;border-radius:999px;
+          border:1px solid rgba(255,255,255,.14);
+          background:rgba(0,0,0,.30);
+          color:#cfe0ff;font-weight:900;font-size:12px;letter-spacing:.7px;
+        ">
+          🎄 UPS • NAVIDAD • GALERÍA • AR
         </div>
-        <h1 style="margin:10px 0 6px;font-size:clamp(22px,3vw,34px);letter-spacing:.2px;">
-          Personajes del Nacimiento (con enlace a AR)
+
+        <h1 style="margin:10px 0 6px;font-size:clamp(22px,3.2vw,36px);letter-spacing:.2px;">
+          Personajes del Nacimiento
         </h1>
-        <p style="margin:0;color:#b9c7dd;max-width:80ch;line-height:1.55;">
-          Cada tarjeta incluye un botón para ver el personaje en <b>Realidad Aumentada</b>.
-          <br>
-          <span style="opacity:.9;">✅ Reemplaza los links <b>AR_LINK</b> por tus páginas (ej.: <i>ar/jesus.html</i>) o URLs externas.</span>
+
+        <p style="margin:0;color:#c8d6ee;max-width:86ch;line-height:1.55;">
+          Tarjetas navideñas con estilo <b>UPS</b> (azul/dorado) + <b>Navidad</b> (rojo/verde).
+          Cada personaje tiene su <b>imagen</b> y un botón para verlo en <b>Realidad Aumentada</b>.
         </p>
+
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+          <span style="display:inline-flex;gap:8px;align-items:center;padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.28);color:#c8d6ee;font-weight:800;font-size:13px;">
+            📱 Abre AR en móvil (HTTPS)
+          </span>
+          <span style="display:inline-flex;gap:8px;align-items:center;padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.28);color:#c8d6ee;font-weight:800;font-size:13px;">
+            ✨ Reemplaza <span style="color:#FFC72C;">IMG_*</span> y <span style="color:#2ECC71;">AR_LINK_*</span>
+          </span>
+        </div>
       </div>
 
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-        <div style="display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#b9c7dd;font-weight:700;font-size:13px;">
-          📱 Consejo: abre AR desde móvil (HTTPS)
-        </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <button onclick="window.print()" style="
+          cursor:pointer;
+          border:1px solid rgba(255,255,255,.16);
+          background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+          color:#eef5ff;
+          padding:10px 12px;border-radius:12px;
+          font-weight:900;
+        ">🖨️ Imprimir / PDF</button>
+
+        <button id="copyBtn" style="
+          cursor:pointer;
+          border:1px solid rgba(255,255,255,.16);
+          background:linear-gradient(180deg, rgba(0,51,160,.35), rgba(0,0,0,.10));
+          color:#eef5ff;
+          padding:10px 12px;border-radius:12px;
+          font-weight:900;
+        ">🔗 Copiar link</button>
       </div>
     </div>
   </header>
 
-  <main style="max-width:1100px;margin:0 auto;padding:10px 18px 26px;">
+  <!-- Contenedor -->
+  <main style="max-width:1140px;margin:0 auto;padding:10px 18px 26px;">
 
     <!-- Grid -->
-    <section style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;">
+    <section style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;">
 
-      <!-- Helper: botón AR -->
-      <!-- Usa target=_blank si deseas abrir en nueva pestaña -->
+      <!-- ====== CARD COMPONENT (manual, solo inline styles) ====== -->
       <!-- Jesús -->
       <article data-span="6" style="
         grid-column: span 6;
-        border:1px solid rgba(255,255,255,.12);
-        border-radius:18px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:22px;
         background:
-          radial-gradient(600px 220px at 15% 0%, rgba(255,209,102,.22), transparent 60%),
-          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-        box-shadow:0 18px 60px rgba(0,0,0,.35);
+          radial-gradient(700px 240px at 12% 0%, rgba(255,199,44,.22), transparent 62%),
+          radial-gradient(700px 240px at 85% 10%, rgba(0,51,160,.18), transparent 62%),
+          linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+        box-shadow:0 24px 80px rgba(0,0,0,.40);
         overflow:hidden;
+        position:relative;
       ">
-        <div style="padding:16px 16px 0;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:54px;height:54px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:26px;">👶✨</div>
-          <div style="flex:1;">
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-              <h2 style="margin:0;font-size:18px;">Jesús</h2>
-              <span style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Luz del mundo</span>
+        <div style="position:absolute;inset:auto -60px -60px auto;width:180px;height:180px;background:radial-gradient(circle, rgba(215,38,56,.28), transparent 60%);filter:blur(1px);"></div>
+
+        <div style="display:flex;gap:16px;align-items:stretch;">
+          <!-- Imagen -->
+          <div style="width:42%;min-height:210px;position:relative;">
+            <img src="IMG_JESUS" alt="Jesús" style="
+              width:100%;height:100%;object-fit:cover;display:block;
+              border-right:1px solid rgba(255,255,255,.12);
+            ">
+            <div style="
+              position:absolute;inset:0;
+              background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));
+            "></div>
+            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👶 Jesús</span>
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,199,44,.45);background:rgba(255,199,44,.16);font-weight:900;font-size:12px;color:#ffe6a6;">Luz</span>
             </div>
-            <p style="margin:8px 0 0;color:#eef5ff;line-height:1.55;">
-              El centro del nacimiento: símbolo de esperanza, amor y renovación. Su llegada inspira paz y nos invita a vivir con humildad.
-            </p>
           </div>
-        </div>
-        <div style="padding:12px 16px 16px;">
-          <div style="height:1px;background:rgba(255,255,255,.12);margin:10px 0 12px;"></div>
 
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-            <p style="margin:0;color:#b9c7dd;line-height:1.55;font-size:13px;">💛 Mensaje: “Lo grande empieza en lo pequeño”.</p>
+          <!-- Texto -->
+          <div style="flex:1;padding:16px 16px 14px;">
+            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">Jesús</h2>
+            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
+              El centro del nacimiento: símbolo de esperanza, amor y renovación. Su llegada inspira paz y nos invita a
+              vivir con humildad y bondad.
+            </p>
 
-            <a href="AR_LINK_JESUS" style="
-              text-decoration:none;
-              display:inline-flex;align-items:center;gap:8px;
-              padding:10px 12px;border-radius:12px;
-              border:1px solid rgba(255,255,255,.14);
-              background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-              color:#eef5ff;font-weight:900;font-size:13px;
-            " title="Ver a Jesús en AR">
-              📲 Ver en AR
-              <span style="opacity:.75;font-weight:800;">→</span>
-            </a>
+            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
+
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">💛 “Lo grande empieza en lo pequeño”.</span>
+
+              <a href="AR_LINK_JESUS" style="
+                text-decoration:none;
+                display:inline-flex;align-items:center;gap:9px;
+                padding:10px 12px;border-radius:14px;
+                border:1px solid rgba(46,204,113,.45);
+                background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));
+                color:#eafff2;font-weight:950;font-size:13px;
+              ">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+            </div>
           </div>
         </div>
       </article>
@@ -104,207 +182,219 @@
       <!-- María -->
       <article data-span="6" style="
         grid-column: span 6;
-        border:1px solid rgba(255,255,255,.12);
-        border-radius:18px;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:22px;
         background:
-          radial-gradient(620px 220px at 85% 0%, rgba(86,255,184,.18), transparent 60%),
-          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-        box-shadow:0 18px 60px rgba(0,0,0,.35);
+          radial-gradient(700px 240px at 12% 0%, rgba(0,51,160,.22), transparent 62%),
+          radial-gradient(700px 240px at 90% 0%, rgba(255,199,44,.18), transparent 62%),
+          linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+        box-shadow:0 24px 80px rgba(0,0,0,.40);
         overflow:hidden;
+        position:relative;
       ">
-        <div style="padding:16px 16px 0;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:54px;height:54px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:26px;">👩‍🍼🌿</div>
-          <div style="flex:1;">
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-              <h2 style="margin:0;font-size:18px;">María</h2>
-              <span style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Ternura y fortaleza</span>
+        <div style="position:absolute;inset:auto auto -60px -60px;width:180px;height:180px;background:radial-gradient(circle, rgba(46,204,113,.22), transparent 60%);"></div>
+
+        <div style="display:flex;gap:16px;align-items:stretch;">
+          <div style="width:42%;min-height:210px;position:relative;">
+            <img src="IMG_MARIA" alt="María" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
+            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👩‍🍼 María</span>
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(0,51,160,.55);background:rgba(0,51,160,.20);font-weight:900;font-size:12px;color:#cfe0ff;">UPS</span>
             </div>
-            <p style="margin:8px 0 0;color:#eef5ff;line-height:1.55;">
+          </div>
+
+          <div style="flex:1;padding:16px 16px 14px;">
+            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">María</h2>
+            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
               Representa la confianza, la entrega y el cuidado. Presencia serena que acompaña con amor y paciencia.
             </p>
-          </div>
-        </div>
-        <div style="padding:12px 16px 16px;">
-          <div style="height:1px;background:rgba(255,255,255,.12);margin:10px 0 12px;"></div>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-            <p style="margin:0;color:#b9c7dd;line-height:1.55;font-size:13px;">🌟 Virtud: la esperanza que no se rinde.</p>
-            <a href="AR_LINK_MARIA" style="
-              text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;
-              border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-              color:#eef5ff;font-weight:900;font-size:13px;" title="Ver a María en AR">📲 Ver en AR <span style="opacity:.75;font-weight:800;">→</span></a>
+
+            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
+
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">🌟 Virtud: esperanza que no se rinde.</span>
+              <a href="AR_LINK_MARIA" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+            </div>
           </div>
         </div>
       </article>
 
       <!-- José -->
-      <article data-span="6" style="
-        grid-column: span 6;
-        border:1px solid rgba(255,255,255,.12);
-        border-radius:18px;
-        background:
-          radial-gradient(620px 220px at 15% 0%, rgba(120,153,255,.16), transparent 60%),
-          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-        box-shadow:0 18px 60px rgba(0,0,0,.35);
-        overflow:hidden;
-      ">
-        <div style="padding:16px 16px 0;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:54px;height:54px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:26px;">🧔‍♂️🪵</div>
-          <div style="flex:1;">
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-              <h2 style="margin:0;font-size:18px;">José</h2>
-              <span style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Custodio y guía</span>
+      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(700px 240px at 15% 0%, rgba(255,199,44,.18), transparent 62%),radial-gradient(700px 240px at 90% 0%, rgba(215,38,56,.14), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;position:relative;">
+        <div style="position:absolute;inset:auto -60px -60px auto;width:180px;height:180px;background:radial-gradient(circle, rgba(0,51,160,.22), transparent 60%);"></div>
+        <div style="display:flex;gap:16px;align-items:stretch;">
+          <div style="width:42%;min-height:210px;position:relative;">
+            <img src="IMG_JOSE" alt="José" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
+            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">🧔‍♂️ José</span>
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,199,44,.45);background:rgba(255,199,44,.16);font-weight:900;font-size:12px;color:#ffe6a6;">Dorado</span>
             </div>
-            <p style="margin:8px 0 0;color:#eef5ff;line-height:1.55;">
+          </div>
+          <div style="flex:1;padding:16px 16px 14px;">
+            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">José</h2>
+            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
               Protege, acompaña y trabaja con constancia. Un amor que se demuestra con acciones y responsabilidad.
             </p>
-          </div>
-        </div>
-        <div style="padding:12px 16px 16px;">
-          <div style="height:1px;background:rgba(255,255,255,.12);margin:10px 0 12px;"></div>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-            <p style="margin:0;color:#b9c7dd;line-height:1.55;font-size:13px;">🛠️ Valor: fidelidad en lo cotidiano.</p>
-            <a href="AR_LINK_JOSE" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#eef5ff;font-weight:900;font-size:13px;" title="Ver a José en AR">📲 Ver en AR <span style="opacity:.75;font-weight:800;">→</span></a>
+            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">🛠️ Valor: fidelidad diaria.</span>
+              <a href="AR_LINK_JOSE" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+            </div>
           </div>
         </div>
       </article>
 
       <!-- Don Bosco -->
-      <article data-span="6" style="
-        grid-column: span 6;
-        border:1px solid rgba(255,255,255,.12);
-        border-radius:18px;
-        background:
-          radial-gradient(620px 220px at 85% 0%, rgba(255,140,140,.14), transparent 60%),
-          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-        box-shadow:0 18px 60px rgba(0,0,0,.35);
-        overflow:hidden;
-      ">
-        <div style="padding:16px 16px 0;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:54px;height:54px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:26px;">🎩📚</div>
-          <div style="flex:1;">
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-              <h2 style="margin:0;font-size:18px;">Don Bosco</h2>
-              <span style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Educador y amigo</span>
+      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(700px 240px at 12% 0%, rgba(0,51,160,.22), transparent 62%),radial-gradient(700px 240px at 90% 0%, rgba(215,38,56,.14), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;position:relative;">
+        <div style="position:absolute;inset:auto auto -60px -60px;width:180px;height:180px;background:radial-gradient(circle, rgba(255,199,44,.22), transparent 60%);"></div>
+        <div style="display:flex;gap:16px;align-items:stretch;">
+          <div style="width:42%;min-height:210px;position:relative;">
+            <img src="IMG_DONBOSCO" alt="Don Bosco" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
+            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">🎩 Don Bosco</span>
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(46,204,113,.45);background:rgba(46,204,113,.16);font-weight:900;font-size:12px;color:#dfffea;">Navidad</span>
             </div>
-            <p style="margin:8px 0 0;color:#eef5ff;line-height:1.55;">
+          </div>
+          <div style="flex:1;padding:16px 16px 14px;">
+            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">Don Bosco</h2>
+            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
               Representa la alegría y el acompañamiento. Invita a vivir la Navidad con servicio, educación y corazón.
             </p>
-          </div>
-        </div>
-        <div style="padding:12px 16px 16px;">
-          <div style="height:1px;background:rgba(255,255,255,.12);margin:10px 0 12px;"></div>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-            <p style="margin:0;color:#b9c7dd;line-height:1.55;font-size:13px;">😊 Lema: “Siempre alegres”.</p>
-            <a href="AR_LINK_DONBOSCO" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#eef5ff;font-weight:900;font-size:13px;" title="Ver a Don Bosco en AR">📲 Ver en AR <span style="opacity:.75;font-weight:800;">→</span></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Reyes Magos (3 cards pequeñas) -->
-      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:radial-gradient(520px 220px at 30% 0%, rgba(255,209,102,.16), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden;">
-        <div style="padding:16px;display:flex;gap:12px;align-items:flex-start;">
-          <div style="width:52px;height:52px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:24px;">👑⭐</div>
-          <div style="flex:1;">
-            <h2 style="margin:0;font-size:16px;">Melchor</h2>
-            <div style="margin-top:6px;display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Oro</div>
-            <p style="margin:10px 0 0;color:#eef5ff;line-height:1.55;font-size:13.5px;">Ofrenda de honor y gratitud: reconocer la dignidad y la grandeza.</p>
-            <a href="AR_LINK_MELCHOR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#eef5ff;font-weight:900;font-size:13px;" title="Ver a Melchor en AR">📲 Ver en AR <span style="opacity:.75;font-weight:800;">→</span></a>
+            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">😊 Lema: “Siempre alegres”.</span>
+              <a href="AR_LINK_DONBOSCO" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+            </div>
           </div>
         </div>
       </article>
 
-      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:radial-gradient(520px 220px at 50% 0%, rgba(86,255,184,.12), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden;">
-        <div style="padding:16px;display:flex;gap:12px;align-items:flex-start;">
-          <div style="width:52px;height:52px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:24px;">👑🌿</div>
-          <div style="flex:1;">
-            <h2 style="margin:0;font-size:16px;">Gaspar</h2>
-            <div style="margin-top:6px;display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Incienso</div>
-            <p style="margin:10px 0 0;color:#eef5ff;line-height:1.55;font-size:13.5px;">Oración y fe: lo que elevamos con el corazón.</p>
-            <a href="AR_LINK_GASPAR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#eef5ff;font-weight:900;font-size:13px;" title="Ver a Gaspar en AR">📲 Ver en AR <span style="opacity:.75;font-weight:800;">→</span></a>
+      <!-- Reyes Magos (3 tarjetas) -->
+      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(650px 240px at 20% 0%, rgba(255,199,44,.18), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
+        <div style="display:flex;gap:12px;align-items:stretch;">
+          <div style="width:44%;min-height:210px;position:relative;">
+            <img src="IMG_MELCHOR" alt="Melchor" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.40));"></div>
+            <div style="position:absolute;left:10px;top:10px;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👑 Melchor</span>
+            </div>
+          </div>
+          <div style="flex:1;padding:14px;">
+            <div style="display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,199,44,.45);background:rgba(255,199,44,.14);color:#ffe6a6;font-size:12px;font-weight:900;">Oro</div>
+            <p style="margin:10px 0 0;color:#eaf2ff;line-height:1.6;font-size:13.5px;">
+              Ofrenda de honor y gratitud: reconocer la dignidad y la grandeza.
+            </p>
+            <a href="AR_LINK_MELCHOR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR →</a>
           </div>
         </div>
       </article>
 
-      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:radial-gradient(520px 220px at 70% 0%, rgba(120,153,255,.12), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden;">
-        <div style="padding:16px;display:flex;gap:12px;align-items:flex-start;">
-          <div style="width:52px;height:52px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:24px;">👑🪔</div>
-          <div style="flex:1;">
-            <h2 style="margin:0;font-size:16px;">Baltasar</h2>
-            <div style="margin-top:6px;display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Mirra</div>
-            <p style="margin:10px 0 0;color:#eef5ff;line-height:1.55;font-size:13.5px;">Entrega y fortaleza: amar también en la dificultad.</p>
-            <a href="AR_LINK_BALTASAR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#eef5ff;font-weight:900;font-size:13px;" title="Ver a Baltasar en AR">📲 Ver en AR <span style="opacity:.75;font-weight:800;">→</span></a>
+      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(650px 240px at 50% 0%, rgba(46,204,113,.12), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
+        <div style="display:flex;gap:12px;align-items:stretch;">
+          <div style="width:44%;min-height:210px;position:relative;">
+            <img src="IMG_GASPAR" alt="Gaspar" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.40));"></div>
+            <div style="position:absolute;left:10px;top:10px;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👑 Gaspar</span>
+            </div>
+          </div>
+          <div style="flex:1;padding:14px;">
+            <div style="display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(0,51,160,.55);background:rgba(0,51,160,.18);color:#cfe0ff;font-size:12px;font-weight:900;">Incienso</div>
+            <p style="margin:10px 0 0;color:#eaf2ff;line-height:1.6;font-size:13.5px;">
+              Oración y fe: lo que elevamos con el corazón.
+            </p>
+            <a href="AR_LINK_GASPAR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR →</a>
+          </div>
+        </div>
+      </article>
+
+      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(650px 240px at 80% 0%, rgba(215,38,56,.12), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
+        <div style="display:flex;gap:12px;align-items:stretch;">
+          <div style="width:44%;min-height:210px;position:relative;">
+            <img src="IMG_BALTASAR" alt="Baltasar" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.40));"></div>
+            <div style="position:absolute;left:10px;top:10px;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👑 Baltasar</span>
+            </div>
+          </div>
+          <div style="flex:1;padding:14px;">
+            <div style="display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(215,38,56,.55);background:rgba(215,38,56,.16);color:#ffd6db;font-size:12px;font-weight:900;">Mirra</div>
+            <p style="margin:10px 0 0;color:#eaf2ff;line-height:1.6;font-size:13.5px;">
+              Entrega y fortaleza: amar también en la dificultad.
+            </p>
+            <a href="AR_LINK_BALTASAR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR →</a>
           </div>
         </div>
       </article>
 
       <!-- Toña -->
-      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:radial-gradient(650px 220px at 20% 0%, rgba(255,209,102,.14), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden;">
-        <div style="padding:16px 16px 0;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:54px;height:54px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:26px;">🐄🎁</div>
-          <div style="flex:1;">
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-              <h2 style="margin:0;font-size:18px;">Toña (la vaca)</h2>
-              <span style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Calor de establo</span>
+      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(700px 240px at 12% 0%, rgba(46,204,113,.14), transparent 62%),radial-gradient(700px 240px at 90% 0%, rgba(255,199,44,.16), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
+        <div style="display:flex;gap:16px;align-items:stretch;">
+          <div style="width:42%;min-height:210px;position:relative;">
+            <img src="IMG_TONA" alt="Toña (la vaca)" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
+            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">🐄 Toña</span>
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(46,204,113,.45);background:rgba(46,204,113,.14);font-weight:900;font-size:12px;color:#dfffea;">Verde</span>
             </div>
-            <p style="margin:8px 0 0;color:#eef5ff;line-height:1.55;">
+          </div>
+          <div style="flex:1;padding:16px 16px 14px;">
+            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">Toña (la vaca)</h2>
+            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
               Aporta ternura y lo campestre. Representa la sencillez del pesebre y el cuidado de lo frágil.
             </p>
-          </div>
-        </div>
-        <div style="padding:12px 16px 16px;">
-          <div style="height:1px;background:rgba(255,255,255,.12);margin:10px 0 12px;"></div>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-            <p style="margin:0;color:#b9c7dd;line-height:1.55;font-size:13px;">🥛 Detalle: abrigo y cercanía en el pesebre.</p>
-            <a href="AR_LINK_TONA" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#eef5ff;font-weight:900;font-size:13px;" title="Ver a Toña en AR">📲 Ver en AR <span style="opacity:.75;font-weight:800;">→</span></a>
+            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">🥛 Detalle: abrigo y cercanía.</span>
+              <a href="AR_LINK_TONA" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+            </div>
           </div>
         </div>
       </article>
 
       <!-- Alfonsín -->
-      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:radial-gradient(650px 220px at 80% 0%, rgba(86,255,184,.12), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden;">
-        <div style="padding:16px 16px 0;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:54px;height:54px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center;font-size:26px;">🫏🎄</div>
-          <div style="flex:1;">
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-              <h2 style="margin:0;font-size:18px;">Alfonsín (el burrito)</h2>
-              <span style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);color:#b9c7dd;font-size:12px;font-weight:800;">Humildad y camino</span>
+      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(700px 240px at 12% 0%, rgba(0,51,160,.22), transparent 62%),radial-gradient(700px 240px at 90% 0%, rgba(255,199,44,.16), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
+        <div style="display:flex;gap:16px;align-items:stretch;">
+          <div style="width:42%;min-height:210px;position:relative;">
+            <img src="IMG_ALFONSIN" alt="Alfonsín (el burrito)" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
+            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">🫏 Alfonsín</span>
+              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(0,51,160,.55);background:rgba(0,51,160,.18);font-weight:900;font-size:12px;color:#cfe0ff;">Azul UPS</span>
             </div>
-            <p style="margin:8px 0 0;color:#eef5ff;line-height:1.55;">
+          </div>
+          <div style="flex:1;padding:16px 16px 14px;">
+            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">Alfonsín (el burrito)</h2>
+            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
               Representa paciencia y constancia: avanzar paso a paso. Su presencia suma sencillez y nobleza.
             </p>
-          </div>
-        </div>
-        <div style="padding:12px 16px 16px;">
-          <div style="height:1px;background:rgba(255,255,255,.12);margin:10px 0 12px;"></div>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-            <p style="margin:0;color:#b9c7dd;line-height:1.55;font-size:13px;">🧭 Mensaje: constancia y corazón noble.</p>
-            <a href="AR_LINK_ALFONSIN" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#eef5ff;font-weight:900;font-size:13px;" title="Ver a Alfonsín en AR">📲 Ver en AR <span style="opacity:.75;font-weight:800;">→</span></a>
+            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">🧭 Mensaje: constancia y corazón noble.</span>
+              <a href="AR_LINK_ALFONSIN" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+            </div>
           </div>
         </div>
       </article>
 
     </section>
 
-    <!-- Pie -->
-    <footer style="margin-top:16px;padding:14px 16px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));color:#b9c7dd;line-height:1.6;box-shadow:0 18px 60px rgba(0,0,0,.28);">
-      <div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;justify-content:space-between;">
-        <div>
-          <b style="color:#eef5ff;">Importante:</b> coloca tus URLs reales en los <b>AR_LINK_...</b>.<br>
-          Ejemplo: <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;padding:2px 8px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(0,0,0,.25);">ar/jesus.html</span>
-        </div>
-        <div style="display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);">
-          ✨ Feliz Navidad
-        </div>
-      </div>
+    <footer style="margin-top:16px;padding:14px 16px;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));color:#c8d6ee;line-height:1.65;box-shadow:0 22px 70px rgba(0,0,0,.35);">
+      <b style="color:#eef5ff;">Cómo usar:</b>
+      Sube tus imágenes y reemplaza: <span style="color:#FFC72C;font-weight:900;">IMG_JESUS</span>, <span style="color:#FFC72C;font-weight:900;">IMG_MARIA</span>, etc.
+      Luego reemplaza los enlaces: <span style="color:#2ECC71;font-weight:900;">AR_LINK_JESUS</span>, etc.
+      <br><span style="opacity:.9;">Tip: si tus páginas AR están en la carpeta <b>/ar</b>, usa por ejemplo <b>ar/jesus.html</b>.</span>
     </footer>
 
   </main>
 
-  <!-- Responsive grid sin CSS externo -->
+  <!-- Responsive: en móvil todo a 12 columnas -->
   <script>
-    // Ajuste simple para mobile: fuerza que todas las tarjetas ocupen 12 columnas
     (function(){
-      const mq = window.matchMedia("(max-width: 900px)");
+      const mq = window.matchMedia("(max-width: 980px)");
       function apply(){
         document.querySelectorAll("article[data-span]").forEach(card=>{
           const span = card.getAttribute("data-span");
@@ -313,9 +403,22 @@
       }
       mq.addEventListener?.("change", apply);
       apply();
+
+      // Copiar link
+      const btn = document.getElementById("copyBtn");
+      btn?.addEventListener("click", async () => {
+        try{
+          await navigator.clipboard.writeText(location.href);
+          btn.textContent = "✅ Link copiado";
+          setTimeout(()=> btn.textContent = "🔗 Copiar link", 1200);
+        }catch(e){
+          alert("No se pudo copiar automáticamente. Copia manualmente el enlace del navegador.");
+        }
+      });
     })();
   </script>
 
 </body>
 </html>
+
 
