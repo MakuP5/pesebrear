@@ -3,422 +3,498 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Galería Navideña – Personajes del Nacimiento (UPS + AR)</title>
+  <title>Galería Navideña – Nacimiento (UPS + AR)</title>
+
+  <style>
+    :root{
+      /* UPS + Navidad */
+      --upsBlue:#0033A0;
+      --upsGold:#FFC72C;
+      --xmasRed:#D72638;
+      --xmasGreen:#2ECC71;
+
+      --bg0:#070b10;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.04);
+      --line:rgba(255,255,255,.14);
+      --txt:#ECF4FF;
+      --muted:#BFD0EA;
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --r: 22px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+      color: var(--txt);
+      background:
+        radial-gradient(900px 520px at 10% 0%, rgba(255,199,44,.18), transparent 60%),
+        radial-gradient(900px 520px at 95% 15%, rgba(0,51,160,.18), transparent 60%),
+        radial-gradient(900px 520px at 60% 105%, rgba(46,204,113,.12), transparent 60%),
+        radial-gradient(900px 520px at 30% 110%, rgba(215,38,56,.10), transparent 60%),
+        linear-gradient(180deg, #05070b 0%, var(--bg0) 40%, #060a10 100%);
+      overflow-x:hidden;
+    }
+
+    /* Luces navideñas arriba */
+    .lights{
+      height:92px; position:fixed; left:0; right:0; top:0; z-index:-1;
+      opacity:.9;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.65));
+      background:
+        radial-gradient(circle at 6% 55%, rgba(255,199,44,.95) 0 3px, transparent 4px),
+        radial-gradient(circle at 14% 35%, rgba(46,204,113,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 22% 55%, rgba(215,38,56,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 30% 35%, rgba(140,170,255,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 38% 55%, rgba(255,199,44,.95) 0 3px, transparent 4px),
+        radial-gradient(circle at 46% 35%, rgba(46,204,113,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 54% 55%, rgba(215,38,56,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 62% 35%, rgba(140,170,255,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 70% 55%, rgba(255,199,44,.95) 0 3px, transparent 4px),
+        radial-gradient(circle at 78% 35%, rgba(46,204,113,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 86% 55%, rgba(215,38,56,.90) 0 3px, transparent 4px),
+        radial-gradient(circle at 94% 35%, rgba(140,170,255,.90) 0 3px, transparent 4px);
+    }
+
+    .wrap{ max-width:1140px; margin:0 auto; padding: 22px 18px 28px; }
+    header{
+      margin-top:10px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--r) + 2px);
+      background:
+        radial-gradient(900px 260px at 10% 0%, rgba(255,199,44,.18), transparent 65%),
+        radial-gradient(900px 260px at 95% 0%, rgba(0,51,160,.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      padding:18px;
+      position: sticky;
+      top: 12px;
+      z-index: 5;
+    }
+
+    .toprow{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.28);
+      color: var(--muted);
+      font-weight:900; font-size:12px; letter-spacing:.7px;
+    }
+    h1{
+      margin:10px 0 6px;
+      font-size: clamp(22px, 3.2vw, 38px);
+      letter-spacing:.2px;
+      line-height:1.05;
+    }
+    .subtitle{ margin:0; color: var(--muted); max-width: 86ch; line-height:1.55; }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:9px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      color: var(--muted);
+      font-weight:800; font-size:13px;
+    }
+    .btn{
+      cursor:pointer;
+      display:inline-flex; align-items:center; gap:9px;
+      padding:10px 12px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      color: var(--txt);
+      font-weight:950; font-size:13px;
+      text-decoration:none;
+      transition: transform .08s ease, filter .2s ease, border-color .2s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.26); filter: brightness(1.05); }
+    .btn:active{ transform: translateY(0); }
+
+    .btnAR{
+      border-color: rgba(46,204,113,.48);
+      background: linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));
+      color: #E9FFF2;
+    }
+    .btnUPS{
+      border-color: rgba(0,51,160,.55);
+      background: linear-gradient(180deg, rgba(0,51,160,.26), rgba(0,0,0,.08));
+    }
+
+    /* “Fireworks” / brillo decorativo detrás del grid */
+    .spark{
+      position:absolute; inset:auto;
+      width:340px; height:340px; border-radius:50%;
+      filter: blur(0.5px);
+      opacity:.55;
+      pointer-events:none;
+      mix-blend-mode: screen;
+      background: radial-gradient(circle, rgba(255,199,44,.35), transparent 55%);
+    }
+
+    main{ position:relative; padding-top:14px; }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, minmax(0,1fr));
+      gap:16px;
+    }
+
+    .card{
+      grid-column: span 6;
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background:
+        radial-gradient(700px 260px at 12% 0%, rgba(255,199,44,.16), transparent 62%),
+        radial-gradient(700px 260px at 90% 10%, rgba(0,51,160,.14), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .card.small{ grid-column: span 4; }
+    .card.redGlow::after{
+      content:""; position:absolute; right:-60px; bottom:-60px; width:220px; height:220px;
+      background: radial-gradient(circle, rgba(215,38,56,.26), transparent 60%);
+    }
+    .card.greenGlow::after{
+      content:""; position:absolute; left:-60px; bottom:-60px; width:220px; height:220px;
+      background: radial-gradient(circle, rgba(46,204,113,.22), transparent 60%);
+    }
+
+    .cardInner{ display:flex; gap:16px; align-items:stretch; min-height: 230px; }
+    .media{
+      width:42%;
+      position:relative;
+      border-right:1px solid rgba(255,255,255,.12);
+      min-height: 230px;
+    }
+    .media img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .media .shade{
+      position:absolute; inset:0;
+      background: linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.42));
+    }
+    .tagRow{
+      position:absolute; left:12px; top:12px;
+      display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .tag{
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.35);
+      font-weight:950; font-size:12px;
+    }
+    .tag.gold{ border-color: rgba(255,199,44,.50); background: rgba(255,199,44,.16); color:#FFE8AB; }
+    .tag.blue{ border-color: rgba(0,51,160,.60); background: rgba(0,51,160,.18); color:#D4E2FF; }
+    .tag.red{ border-color: rgba(215,38,56,.55); background: rgba(215,38,56,.16); color:#FFD7DC; }
+    .tag.green{ border-color: rgba(46,204,113,.50); background: rgba(46,204,113,.16); color:#E1FFEC; }
+
+    .body{ flex:1; padding:16px 16px 14px; display:flex; flex-direction:column; }
+    .body h2{ margin:0; font-size:18px; letter-spacing:.2px; }
+    .body p{ margin:8px 0 0; color: var(--txt); line-height:1.6; }
+    .sep{ height:1px; background: rgba(255,255,255,.12); margin:12px 0; }
+    .meta{
+      margin-top:auto;
+      display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      color: var(--muted); font-weight:800; font-size:13px;
+    }
+
+    footer{
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius: calc(var(--r) + 2px);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      padding:14px 16px;
+      color: var(--muted);
+      line-height:1.65;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      header{ position: static; }
+      .card, .card.small{ grid-column: span 12; }
+      .media{ width: 42%; }
+    }
+    @media (max-width: 640px){
+      .cardInner{ flex-direction:column; }
+      .media{ width:100%; border-right:none; border-bottom:1px solid rgba(255,255,255,.12); }
+      .media{ min-height: 220px; }
+    }
+  </style>
 </head>
 
-<body style="margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Helvetica,Arial;background:#070b10;color:#eef5ff;">
+<body>
+  <div class="lights"></div>
 
-  <!-- ==========================================================
-    CONFIG RÁPIDA (edita solo aquí)
-    - Reemplaza IMG_* por tus rutas (jpg/png/webp) o URLs
-    - Reemplaza AR_LINK_* por tus páginas AR
-    Colores:
-    - UPS (aprox): Azul #0033A0 / Dorado #FFC72C
-    - Navidad: Rojo #D72638 / Verde #2ECC71
-  =========================================================== -->
-
-  <!-- Fondo / decoración -->
-  <div style="
-    position:fixed;inset:0;z-index:-1;
-    background:
-      radial-gradient(950px 520px at 10% 0%, rgba(255,199,44,.20), transparent 58%),
-      radial-gradient(900px 520px at 90% 20%, rgba(46,204,113,.14), transparent 62%),
-      radial-gradient(900px 520px at 60% 110%, rgba(0,51,160,.18), transparent 58%),
-      radial-gradient(700px 420px at 30% 90%, rgba(215,38,56,.12), transparent 55%),
-      linear-gradient(180deg, #05070b 0%, #070b10 35%, #060a10 100%);
-  "></div>
-
-  <!-- “Luces” navideñas -->
-  <div style="
-    position:fixed;left:0;right:0;top:0;z-index:-1;
-    height:92px;
-    background:
-      radial-gradient(circle at 6% 55%, rgba(255,199,44,.9) 0 3px, transparent 4px),
-      radial-gradient(circle at 14% 35%, rgba(46,204,113,.85) 0 3px, transparent 4px),
-      radial-gradient(circle at 22% 55%, rgba(215,38,56,.85) 0 3px, transparent 4px),
-      radial-gradient(circle at 30% 35%, rgba(120,153,255,.85) 0 3px, transparent 4px),
-      radial-gradient(circle at 38% 55%, rgba(255,199,44,.9) 0 3px, transparent 4px),
-      radial-gradient(circle at 46% 35%, rgba(46,204,113,.85) 0 3px, transparent 4px),
-      radial-gradient(circle at 54% 55%, rgba(215,38,56,.85) 0 3px, transparent 4px),
-      radial-gradient(circle at 62% 35%, rgba(120,153,255,.85) 0 3px, transparent 4px),
-      radial-gradient(circle at 70% 55%, rgba(255,199,44,.9) 0 3px, transparent 4px),
-      radial-gradient(circle at 78% 35%, rgba(46,204,113,.85) 0 3px, transparent 4px),
-      radial-gradient(circle at 86% 55%, rgba(215,38,56,.85) 0 3px, transparent 4px),
-      radial-gradient(circle at 94% 35%, rgba(120,153,255,.85) 0 3px, transparent 4px);
-    opacity:.85;
-    filter: drop-shadow(0 10px 18px rgba(0,0,0,.65));
-  "></div>
-
-  <!-- Encabezado -->
-  <header style="
-    max-width:1140px;margin:22px auto 12px;padding:18px 18px 16px;
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:20px;
-    background:
-      radial-gradient(900px 260px at 10% 0%, rgba(255,199,44,.18), transparent 65%),
-      radial-gradient(900px 260px at 95% 0%, rgba(0,51,160,.22), transparent 60%),
-      linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-    box-shadow:0 22px 70px rgba(0,0,0,.50);
-    backdrop-filter: blur(12px);
-  ">
-    <div style="display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;">
-      <div>
-        <div style="
-          display:inline-flex;align-items:center;gap:10px;
-          padding:8px 12px;border-radius:999px;
-          border:1px solid rgba(255,255,255,.14);
-          background:rgba(0,0,0,.30);
-          color:#cfe0ff;font-weight:900;font-size:12px;letter-spacing:.7px;
-        ">
-          🎄 UPS • NAVIDAD • GALERÍA • AR
+  <div class="wrap">
+    <header>
+      <div class="toprow">
+        <div>
+          <div class="kicker">🎄 UPS • NAVIDAD • GALERÍA • AR</div>
+          <h1>Personajes del Nacimiento</h1>
+          <p class="subtitle">
+            Diseño navideño inspirado en el estilo “landing” del demo (brillos, degradados, tarjetas modernas),
+            con paleta <b>UPS</b> (azul/dorado) + <b>Navidad</b> (rojo/verde).
+          </p>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+            <span class="pill">📱 AR funciona mejor en móvil (HTTPS)</span>
+            <span class="pill">✨ Cambia imágenes <b style="color:var(--upsGold)">img/..</b> y links <b style="color:var(--xmasGreen)">ar/..</b></span>
+          </div>
         </div>
 
-        <h1 style="margin:10px 0 6px;font-size:clamp(22px,3.2vw,36px);letter-spacing:.2px;">
-          Personajes del Nacimiento
-        </h1>
-
-        <p style="margin:0;color:#c8d6ee;max-width:86ch;line-height:1.55;">
-          Tarjetas navideñas con estilo <b>UPS</b> (azul/dorado) + <b>Navidad</b> (rojo/verde).
-          Cada personaje tiene su <b>imagen</b> y un botón para verlo en <b>Realidad Aumentada</b>.
-        </p>
-
-        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-          <span style="display:inline-flex;gap:8px;align-items:center;padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.28);color:#c8d6ee;font-weight:800;font-size:13px;">
-            📱 Abre AR en móvil (HTTPS)
-          </span>
-          <span style="display:inline-flex;gap:8px;align-items:center;padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.28);color:#c8d6ee;font-weight:800;font-size:13px;">
-            ✨ Reemplaza <span style="color:#FFC72C;">IMG_*</span> y <span style="color:#2ECC71;">AR_LINK_*</span>
-          </span>
+        <div class="actions">
+          <button class="btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
+          <button class="btn btnUPS" id="copyBtn">🔗 Copiar link</button>
         </div>
       </div>
+    </header>
 
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-        <button onclick="window.print()" style="
-          cursor:pointer;
-          border:1px solid rgba(255,255,255,.16);
-          background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
-          color:#eef5ff;
-          padding:10px 12px;border-radius:12px;
-          font-weight:900;
-        ">🖨️ Imprimir / PDF</button>
+    <main>
+      <div class="spark" style="left:-80px; top: 80px;"></div>
+      <div class="spark" style="right:-110px; top: 220px; background: radial-gradient(circle, rgba(46,204,113,.32), transparent 55%);"></div>
+      <div class="spark" style="left: 40%; top: 520px; background: radial-gradient(circle, rgba(215,38,56,.28), transparent 55%);"></div>
 
-        <button id="copyBtn" style="
-          cursor:pointer;
-          border:1px solid rgba(255,255,255,.16);
-          background:linear-gradient(180deg, rgba(0,51,160,.35), rgba(0,0,0,.10));
-          color:#eef5ff;
-          padding:10px 12px;border-radius:12px;
-          font-weight:900;
-        ">🔗 Copiar link</button>
-      </div>
-    </div>
-  </header>
+      <section class="grid">
 
-  <!-- Contenedor -->
-  <main style="max-width:1140px;margin:0 auto;padding:10px 18px 26px;">
-
-    <!-- Grid -->
-    <section style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;">
-
-      <!-- ====== CARD COMPONENT (manual, solo inline styles) ====== -->
-      <!-- Jesús -->
-      <article data-span="6" style="
-        grid-column: span 6;
-        border:1px solid rgba(255,255,255,.14);
-        border-radius:22px;
-        background:
-          radial-gradient(700px 240px at 12% 0%, rgba(255,199,44,.22), transparent 62%),
-          radial-gradient(700px 240px at 85% 10%, rgba(0,51,160,.18), transparent 62%),
-          linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-        box-shadow:0 24px 80px rgba(0,0,0,.40);
-        overflow:hidden;
-        position:relative;
-      ">
-        <div style="position:absolute;inset:auto -60px -60px auto;width:180px;height:180px;background:radial-gradient(circle, rgba(215,38,56,.28), transparent 60%);filter:blur(1px);"></div>
-
-        <div style="display:flex;gap:16px;align-items:stretch;">
-          <!-- Imagen -->
-          <div style="width:42%;min-height:210px;position:relative;">
-            <img src="IMG_JESUS" alt="Jesús" style="
-              width:100%;height:100%;object-fit:cover;display:block;
-              border-right:1px solid rgba(255,255,255,.12);
-            ">
-            <div style="
-              position:absolute;inset:0;
-              background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));
-            "></div>
-            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👶 Jesús</span>
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,199,44,.45);background:rgba(255,199,44,.16);font-weight:900;font-size:12px;color:#ffe6a6;">Luz</span>
+        <!-- Jesús -->
+        <article class="card redGlow">
+          <div class="cardInner">
+            <div class="media">
+              <img src="img/jesus.jpg" alt="Jesús">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">👶 Jesús</span>
+                <span class="tag gold">Luz</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>Jesús</h2>
+              <p>Centro del nacimiento: esperanza, amor y renovación. Su presencia invita a la paz y a vivir con humildad.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>💛 “Lo grande empieza en lo pequeño”.</span>
+                <a class="btn btnAR" href="ar/jesus.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
+        </article>
 
-          <!-- Texto -->
-          <div style="flex:1;padding:16px 16px 14px;">
-            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">Jesús</h2>
-            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
-              El centro del nacimiento: símbolo de esperanza, amor y renovación. Su llegada inspira paz y nos invita a
-              vivir con humildad y bondad.
-            </p>
-
-            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
-
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">💛 “Lo grande empieza en lo pequeño”.</span>
-
-              <a href="AR_LINK_JESUS" style="
-                text-decoration:none;
-                display:inline-flex;align-items:center;gap:9px;
-                padding:10px 12px;border-radius:14px;
-                border:1px solid rgba(46,204,113,.45);
-                background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));
-                color:#eafff2;font-weight:950;font-size:13px;
-              ">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+        <!-- María -->
+        <article class="card greenGlow">
+          <div class="cardInner">
+            <div class="media">
+              <img src="img/maria.jpg" alt="María">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">👩‍🍼 María</span>
+                <span class="tag blue">UPS</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>María</h2>
+              <p>Confianza, ternura y fortaleza. Acompaña con serenidad y enseña a cuidar la vida con paciencia.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>🌟 Virtud: esperanza que no se rinde.</span>
+                <a class="btn btnAR" href="ar/maria.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- María -->
-      <article data-span="6" style="
-        grid-column: span 6;
-        border:1px solid rgba(255,255,255,.14);
-        border-radius:22px;
-        background:
-          radial-gradient(700px 240px at 12% 0%, rgba(0,51,160,.22), transparent 62%),
-          radial-gradient(700px 240px at 90% 0%, rgba(255,199,44,.18), transparent 62%),
-          linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-        box-shadow:0 24px 80px rgba(0,0,0,.40);
-        overflow:hidden;
-        position:relative;
-      ">
-        <div style="position:absolute;inset:auto auto -60px -60px;width:180px;height:180px;background:radial-gradient(circle, rgba(46,204,113,.22), transparent 60%);"></div>
-
-        <div style="display:flex;gap:16px;align-items:stretch;">
-          <div style="width:42%;min-height:210px;position:relative;">
-            <img src="IMG_MARIA" alt="María" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
-            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👩‍🍼 María</span>
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(0,51,160,.55);background:rgba(0,51,160,.20);font-weight:900;font-size:12px;color:#cfe0ff;">UPS</span>
+        <!-- José -->
+        <article class="card redGlow">
+          <div class="cardInner">
+            <div class="media">
+              <img src="img/jose.jpg" alt="José">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">🧔‍♂️ José</span>
+                <span class="tag gold">Dorado</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>José</h2>
+              <p>Custodio silencioso: protege, acompaña y trabaja con constancia. Amor que se demuestra con acciones.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>🛠️ Valor: fidelidad diaria.</span>
+                <a class="btn btnAR" href="ar/jose.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
+        </article>
 
-          <div style="flex:1;padding:16px 16px 14px;">
-            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">María</h2>
-            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
-              Representa la confianza, la entrega y el cuidado. Presencia serena que acompaña con amor y paciencia.
-            </p>
-
-            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
-
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">🌟 Virtud: esperanza que no se rinde.</span>
-              <a href="AR_LINK_MARIA" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+        <!-- Don Bosco -->
+        <article class="card greenGlow">
+          <div class="cardInner">
+            <div class="media">
+              <img src="img/donbosco.jpg" alt="Don Bosco">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">🎩 Don Bosco</span>
+                <span class="tag green">Navidad</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>Don Bosco</h2>
+              <p>Presencia salesiana: alegría, cercanía y acompañamiento. Invita a servir, educar y amar con corazón.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>😊 “Siempre alegres”.</span>
+                <a class="btn btnAR" href="ar/donbosco.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- José -->
-      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(700px 240px at 15% 0%, rgba(255,199,44,.18), transparent 62%),radial-gradient(700px 240px at 90% 0%, rgba(215,38,56,.14), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;position:relative;">
-        <div style="position:absolute;inset:auto -60px -60px auto;width:180px;height:180px;background:radial-gradient(circle, rgba(0,51,160,.22), transparent 60%);"></div>
-        <div style="display:flex;gap:16px;align-items:stretch;">
-          <div style="width:42%;min-height:210px;position:relative;">
-            <img src="IMG_JOSE" alt="José" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
-            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">🧔‍♂️ José</span>
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,199,44,.45);background:rgba(255,199,44,.16);font-weight:900;font-size:12px;color:#ffe6a6;">Dorado</span>
+        <!-- Reyes Magos -->
+        <article class="card small redGlow">
+          <div class="cardInner">
+            <div class="media" style="width:44%">
+              <img src="img/melchor.jpg" alt="Melchor">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">👑 Melchor</span>
+                <span class="tag gold">Oro</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>Melchor</h2>
+              <p>Ofrenda de honor y gratitud: reconocer la dignidad y la grandeza.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>✨ Regalo: Oro</span>
+                <a class="btn btnAR" href="ar/melchor.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
-          <div style="flex:1;padding:16px 16px 14px;">
-            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">José</h2>
-            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
-              Protege, acompaña y trabaja con constancia. Un amor que se demuestra con acciones y responsabilidad.
-            </p>
-            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">🛠️ Valor: fidelidad diaria.</span>
-              <a href="AR_LINK_JOSE" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+        </article>
+
+        <article class="card small greenGlow">
+          <div class="cardInner">
+            <div class="media" style="width:44%">
+              <img src="img/gaspar.jpg" alt="Gaspar">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">👑 Gaspar</span>
+                <span class="tag blue">Incienso</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>Gaspar</h2>
+              <p>Oración y fe: lo que elevamos con el corazón como perfume.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>✨ Regalo: Incienso</span>
+                <a class="btn btnAR" href="ar/gaspar.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Don Bosco -->
-      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(700px 240px at 12% 0%, rgba(0,51,160,.22), transparent 62%),radial-gradient(700px 240px at 90% 0%, rgba(215,38,56,.14), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;position:relative;">
-        <div style="position:absolute;inset:auto auto -60px -60px;width:180px;height:180px;background:radial-gradient(circle, rgba(255,199,44,.22), transparent 60%);"></div>
-        <div style="display:flex;gap:16px;align-items:stretch;">
-          <div style="width:42%;min-height:210px;position:relative;">
-            <img src="IMG_DONBOSCO" alt="Don Bosco" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
-            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">🎩 Don Bosco</span>
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(46,204,113,.45);background:rgba(46,204,113,.16);font-weight:900;font-size:12px;color:#dfffea;">Navidad</span>
+        <article class="card small redGlow">
+          <div class="cardInner">
+            <div class="media" style="width:44%">
+              <img src="img/baltasar.jpg" alt="Baltasar">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">👑 Baltasar</span>
+                <span class="tag red">Mirra</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>Baltasar</h2>
+              <p>Entrega y fortaleza: amar también en la dificultad con valentía.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>✨ Regalo: Mirra</span>
+                <a class="btn btnAR" href="ar/baltasar.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
-          <div style="flex:1;padding:16px 16px 14px;">
-            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">Don Bosco</h2>
-            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
-              Representa la alegría y el acompañamiento. Invita a vivir la Navidad con servicio, educación y corazón.
-            </p>
-            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">😊 Lema: “Siempre alegres”.</span>
-              <a href="AR_LINK_DONBOSCO" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
+        </article>
+
+        <!-- Toña -->
+        <article class="card greenGlow">
+          <div class="cardInner">
+            <div class="media">
+              <img src="img/tona.jpg" alt="Toña (la vaca)">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">🐄 Toña</span>
+                <span class="tag green">Calidez</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>Toña (la vaca)</h2>
+              <p>Detalle tierno y campestre: sencillez del pesebre y cuidado de lo frágil.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>🥛 Abrigo y cercanía.</span>
+                <a class="btn btnAR" href="ar/tona.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Reyes Magos (3 tarjetas) -->
-      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(650px 240px at 20% 0%, rgba(255,199,44,.18), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
-        <div style="display:flex;gap:12px;align-items:stretch;">
-          <div style="width:44%;min-height:210px;position:relative;">
-            <img src="IMG_MELCHOR" alt="Melchor" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.40));"></div>
-            <div style="position:absolute;left:10px;top:10px;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👑 Melchor</span>
+        <!-- Alfonsín -->
+        <article class="card redGlow">
+          <div class="cardInner">
+            <div class="media">
+              <img src="img/alfonsin.jpg" alt="Alfonsín (burrito)">
+              <div class="shade"></div>
+              <div class="tagRow">
+                <span class="tag">🫏 Alfonsín</span>
+                <span class="tag blue">Camino</span>
+              </div>
+            </div>
+            <div class="body">
+              <h2>Alfonsín (el burrito)</h2>
+              <p>Paciencia y constancia: avanzar paso a paso. Suma nobleza y sencillez al nacimiento.</p>
+              <div class="sep"></div>
+              <div class="meta">
+                <span>🧭 Mensaje: constancia.</span>
+                <a class="btn btnAR" href="ar/alfonsin.html">📲 Ver en AR →</a>
+              </div>
             </div>
           </div>
-          <div style="flex:1;padding:14px;">
-            <div style="display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,199,44,.45);background:rgba(255,199,44,.14);color:#ffe6a6;font-size:12px;font-weight:900;">Oro</div>
-            <p style="margin:10px 0 0;color:#eaf2ff;line-height:1.6;font-size:13.5px;">
-              Ofrenda de honor y gratitud: reconocer la dignidad y la grandeza.
-            </p>
-            <a href="AR_LINK_MELCHOR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR →</a>
-          </div>
-        </div>
-      </article>
+        </article>
 
-      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(650px 240px at 50% 0%, rgba(46,204,113,.12), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
-        <div style="display:flex;gap:12px;align-items:stretch;">
-          <div style="width:44%;min-height:210px;position:relative;">
-            <img src="IMG_GASPAR" alt="Gaspar" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.40));"></div>
-            <div style="position:absolute;left:10px;top:10px;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👑 Gaspar</span>
-            </div>
-          </div>
-          <div style="flex:1;padding:14px;">
-            <div style="display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(0,51,160,.55);background:rgba(0,51,160,.18);color:#cfe0ff;font-size:12px;font-weight:900;">Incienso</div>
-            <p style="margin:10px 0 0;color:#eaf2ff;line-height:1.6;font-size:13.5px;">
-              Oración y fe: lo que elevamos con el corazón.
-            </p>
-            <a href="AR_LINK_GASPAR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR →</a>
-          </div>
-        </div>
-      </article>
+      </section>
 
-      <article data-span="4" style="grid-column: span 4;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(650px 240px at 80% 0%, rgba(215,38,56,.12), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
-        <div style="display:flex;gap:12px;align-items:stretch;">
-          <div style="width:44%;min-height:210px;position:relative;">
-            <img src="IMG_BALTASAR" alt="Baltasar" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.40));"></div>
-            <div style="position:absolute;left:10px;top:10px;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">👑 Baltasar</span>
-            </div>
-          </div>
-          <div style="flex:1;padding:14px;">
-            <div style="display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(215,38,56,.55);background:rgba(215,38,56,.16);color:#ffd6db;font-size:12px;font-weight:900;">Mirra</div>
-            <p style="margin:10px 0 0;color:#eaf2ff;line-height:1.6;font-size:13.5px;">
-              Entrega y fortaleza: amar también en la dificultad.
-            </p>
-            <a href="AR_LINK_BALTASAR" style="margin-top:12px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR →</a>
-          </div>
-        </div>
-      </article>
+      <footer>
+        <b style="color:var(--txt)">Notas:</b>
+        Coloca tus imágenes en <code style="background:rgba(0,0,0,.25);padding:2px 8px;border:1px solid var(--line);border-radius:10px;color:var(--muted)">/img</code>
+        y las páginas AR en <code style="background:rgba(0,0,0,.25);padding:2px 8px;border:1px solid var(--line);border-radius:10px;color:var(--muted)">/ar</code>.
+        Si quieres, te genero también la plantilla <b>ar/personaje.html</b> con <code>&lt;model-viewer&gt;</code> lista para Android+iPhone.
+      </footer>
+    </main>
+  </div>
 
-      <!-- Toña -->
-      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(700px 240px at 12% 0%, rgba(46,204,113,.14), transparent 62%),radial-gradient(700px 240px at 90% 0%, rgba(255,199,44,.16), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
-        <div style="display:flex;gap:16px;align-items:stretch;">
-          <div style="width:42%;min-height:210px;position:relative;">
-            <img src="IMG_TONA" alt="Toña (la vaca)" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
-            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">🐄 Toña</span>
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(46,204,113,.45);background:rgba(46,204,113,.14);font-weight:900;font-size:12px;color:#dfffea;">Verde</span>
-            </div>
-          </div>
-          <div style="flex:1;padding:16px 16px 14px;">
-            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">Toña (la vaca)</h2>
-            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
-              Aporta ternura y lo campestre. Representa la sencillez del pesebre y el cuidado de lo frágil.
-            </p>
-            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">🥛 Detalle: abrigo y cercanía.</span>
-              <a href="AR_LINK_TONA" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Alfonsín -->
-      <article data-span="6" style="grid-column: span 6;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:radial-gradient(700px 240px at 12% 0%, rgba(0,51,160,.22), transparent 62%),radial-gradient(700px 240px at 90% 0%, rgba(255,199,44,.16), transparent 62%),linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));box-shadow:0 24px 80px rgba(0,0,0,.40);overflow:hidden;">
-        <div style="display:flex;gap:16px;align-items:stretch;">
-          <div style="width:42%;min-height:210px;position:relative;">
-            <img src="IMG_ALFONSIN" alt="Alfonsín (el burrito)" style="width:100%;height:100%;object-fit:cover;display:block;border-right:1px solid rgba(255,255,255,.12);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));"></div>
-            <div style="position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.35);font-weight:900;font-size:12px;color:#eef5ff;">🫏 Alfonsín</span>
-              <span style="padding:7px 10px;border-radius:999px;border:1px solid rgba(0,51,160,.55);background:rgba(0,51,160,.18);font-weight:900;font-size:12px;color:#cfe0ff;">Azul UPS</span>
-            </div>
-          </div>
-          <div style="flex:1;padding:16px 16px 14px;">
-            <h2 style="margin:0;font-size:18px;letter-spacing:.2px;">Alfonsín (el burrito)</h2>
-            <p style="margin:8px 0 0;color:#eaf2ff;line-height:1.6;">
-              Representa paciencia y constancia: avanzar paso a paso. Su presencia suma sencillez y nobleza.
-            </p>
-            <div style="height:1px;background:rgba(255,255,255,.12);margin:12px 0;"></div>
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;">
-              <span style="color:#c8d6ee;font-weight:800;font-size:13px;">🧭 Mensaje: constancia y corazón noble.</span>
-              <a href="AR_LINK_ALFONSIN" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border-radius:14px;border:1px solid rgba(46,204,113,.45);background:linear-gradient(180deg, rgba(46,204,113,.22), rgba(0,0,0,.10));color:#eafff2;font-weight:950;font-size:13px;">📲 Ver en AR <span style="opacity:.85;">→</span></a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </section>
-
-    <footer style="margin-top:16px;padding:14px 16px;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));color:#c8d6ee;line-height:1.65;box-shadow:0 22px 70px rgba(0,0,0,.35);">
-      <b style="color:#eef5ff;">Cómo usar:</b>
-      Sube tus imágenes y reemplaza: <span style="color:#FFC72C;font-weight:900;">IMG_JESUS</span>, <span style="color:#FFC72C;font-weight:900;">IMG_MARIA</span>, etc.
-      Luego reemplaza los enlaces: <span style="color:#2ECC71;font-weight:900;">AR_LINK_JESUS</span>, etc.
-      <br><span style="opacity:.9;">Tip: si tus páginas AR están en la carpeta <b>/ar</b>, usa por ejemplo <b>ar/jesus.html</b>.</span>
-    </footer>
-
-  </main>
-
-  <!-- Responsive: en móvil todo a 12 columnas -->
   <script>
-    (function(){
-      const mq = window.matchMedia("(max-width: 980px)");
-      function apply(){
-        document.querySelectorAll("article[data-span]").forEach(card=>{
-          const span = card.getAttribute("data-span");
-          card.style.gridColumn = mq.matches ? "span 12" : ("span " + span);
-        });
+    // Copiar link
+    const btn = document.getElementById("copyBtn");
+    btn?.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(location.href);
+        btn.textContent = "✅ Link copiado";
+        setTimeout(()=> btn.textContent = "🔗 Copiar link", 1200);
+      }catch(e){
+        alert("No se pudo copiar automáticamente. Copia el enlace desde la barra del navegador.");
       }
-      mq.addEventListener?.("change", apply);
-      apply();
-
-      // Copiar link
-      const btn = document.getElementById("copyBtn");
-      btn?.addEventListener("click", async () => {
-        try{
-          await navigator.clipboard.writeText(location.href);
-          btn.textContent = "✅ Link copiado";
-          setTimeout(()=> btn.textContent = "🔗 Copiar link", 1200);
-        }catch(e){
-          alert("No se pudo copiar automáticamente. Copia manualmente el enlace del navegador.");
-        }
-      });
-    })();
+    });
   </script>
-
 </body>
 </html>
+
 
 
