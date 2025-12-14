@@ -1,0 +1,193 @@
+/* Para páginas con AR: que el modelo 3D pueda ocupar toda la altura */
+html, body {
+  height: 100%;
+}
+
+/* Fondo y texto general */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f7fb;
+  color: #111827;
+}
+
+/* Contenido principal de la página */
+.contenido-principal {
+  padding: 20px;
+  max-width: 900px;
+}
+
+/* ---------- WRAPPER DESPLEGABLE (PESTAÑA + TARJETA) ---------- */
+
+.music-wrapper {
+  position: fixed;
+  top: 50%;
+  right: -260px; /* ajusta si quieres más o menos visible al estar oculto */
+  transform: translateY(-50%);
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+/* Cuando está abierto, panel + pestaña entran juntos */
+.music-wrapper.open {
+  right: 20px;
+}
+
+/* ---------- TARJETA DEL REPRODUCTOR ---------- */
+
+.player-card {
+  width: 260px;
+  background: linear-gradient(180deg, #b91c1c, #15803d); /* rojo + verde */
+  color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  padding: 12px 14px 16px 14px;
+  box-sizing: border-box;
+}
+
+/* HEADER: título + botón de grupo */
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Botón de cambio de grupo (Inglés / Latino) */
+.group-button {
+  border: none;
+  background: #fefce8;
+  color: #15803d;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.group-button:hover {
+  transform: scale(1.05);
+  background: #fffbeb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Portada */
+.cover-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.cover-container img {
+  width: 100%;
+  display: block;
+}
+
+/* Texto de canción actual */
+.now-playing {
+  margin: 8px 0 10px 0;
+  font-size: 13px;
+  text-align: center;
+}
+
+.now-playing span {
+  font-weight: bold;
+}
+
+/* Ocultamos los controles nativos del audio */
+audio {
+  display: none;
+}
+
+/* Botones de control */
+.player-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.player-controls button {
+  width: 60px;
+  padding: 6px 0;
+  border: none;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #15803d; /* iconos verdes */
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+/* Botón de play un poco más grande */
+#btnPlay {
+  width: 70px;
+}
+
+/* Efecto “pop” al pasar el mouse */
+.player-controls button:hover {
+  transform: scale(1.07);
+  background: #fefce8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- PESTAÑA LATERAL PEGADA AL PANEL ---------- */
+
+.music-toggle {
+  position: absolute;
+  top: 50%;
+  left: -38px; /* cuánto sale la pestaña hacia afuera */
+  transform: translateY(-50%);
+  background: #14532d;
+  color: #ffffff;
+  padding: 8px 10px;
+  border-radius: 10px 0 0 10px;
+  font-size: 13px;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.25);
+}
+
+.music-toggle:hover {
+  background: #166534;
+}
+
+/* Responsive: en pantallas pequeñas lo bajamos */
+@media (max-width: 768px) {
+  .music-wrapper {
+    top: auto;
+    bottom: 20px;
+    right: -240px;
+    transform: none;
+  }
+
+  .music-wrapper.open {
+    right: 10px;
+  }
+
+  .music-toggle {
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+  }
+}
+
+/* ---------- PARA LA PÁGINA DE AR (model-viewer) ---------- */
+
+model-viewer {
+  width: 100%;
+  height: 100vh;
+  display: block;
+  background: #111; /* fondo oscuro detrás del modelo */
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test AR + Música Navidad</title>
+
+  <!-- MODEL VIEWER (AR) -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <!-- Tus estilos del reproductor -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- MODELO 3D A PANTALLA COMPLETA -->
+  <model-viewer
+    src="nacimiento.glb"
+    ios-src="nacimiento.usdz"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    camera-controls
+    alt="Nacimiento AR">
+  </model-viewer>
+
+  <!-- WRAPPER DEL REPRODUCTOR + PESTAÑA (IGUAL QUE EN LA OTRA PÁGINA) -->
+  <div id="musicWrapper" class="music-wrapper">
+    <!-- PESTAÑA LATERAL PEGADA AL PANEL -->
+    <div class="music-toggle" onclick="togglePlayer()">
+      🎵 Música
+    </div>
+
+    <!-- TARJETA DEL REPRODUCTOR -->
+    <div class="player-card">
+      <div class="player-header">
+        <span>🎵 Música de Navidad</span>
+
+        <!-- BOTÓN DE GRUPO / IDIOMA -->
+        <button id="btnGrupo" class="group-button" type="button">
+          Inglés
+        </button>
+      </div>
+
+      <div class="cover-container">
+        <img
+          id="portadaCancion"
+          src="img/jingle-bell-rock.jpg"
+          alt="Portada de la canción"
+        />
+      </div>
+
+      <p class="now-playing">
+        Reproduciendo:<br />
+        <span id="nombreCancion">Bobby Helms - Jingle Bell Rock</span>
+      </p>
+
+      <!-- Audio oculto (lo controlamos con JS) -->
+      <audio id="player"></audio>
+
+      <div class="player-controls">
+        <button id="btnPrev" title="Canción anterior">⏮</button>
+        <button id="btnPlay" title="Reproducir / Pausar">▶️</button>
+        <button id="btnNext" title="Siguiente canción">⏭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tu lógica del reproductor -->
+  <script src="script.js"></script>
+</body>
+</html>
