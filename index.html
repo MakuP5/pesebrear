@@ -3,98 +3,279 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Móvil</title>
+  <title>Bienvenida PESEBRE AR</title>
+  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=view_in_ar" />
-
-  <!-- Importar fuente Nabla -->
-  <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* --- RESET --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      background-color: #122f3d; /* Azul Petróleo Oscuro */
+      color: #f4e4d4; /* Crema / Beige */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; /* Importante para la nieve */
+      position: relative;
+    }
+
+    /* --- EFECTO DE NIEVE (CSS PURO) --- */
+    .snowflake {
+      color: #fff;
+      font-size: 1.2em;
+      font-family: Arial;
+      text-shadow: 0 0 1px #000;
+      position: fixed;
+      top: -10%;
+      z-index: 1; 
+      user-select: none;
+      cursor: default;
+      animation-name: snowflakes-fall, snowflakes-shake;
+      animation-duration: 10s, 3s;
+      animation-timing-function: linear, ease-in-out;
+      animation-iteration-count: infinite, infinite;
+      animation-play-state: running, running;
+      opacity: 0.8;
+    }
+
+    .snowflake:nth-of-type(0) { left: 1%; animation-delay: 0s, 0s; }
+    .snowflake:nth-of-type(1) { left: 10%; animation-delay: 1s, 1s; }
+    .snowflake:nth-of-type(2) { left: 20%; animation-delay: 6s, .5s; }
+    .snowflake:nth-of-type(3) { left: 30%; animation-delay: 4s, 2s; }
+    .snowflake:nth-of-type(4) { left: 40%; animation-delay: 2s, 2s; }
+    .snowflake:nth-of-type(5) { left: 50%; animation-delay: 8s, 3s; }
+    .snowflake:nth-of-type(6) { left: 60%; animation-delay: 6s, 2s; }
+    .snowflake:nth-of-type(7) { left: 70%; animation-delay: 2.5s, 1s; }
+    .snowflake:nth-of-type(8) { left: 80%; animation-delay: 1s, 0s; }
+    .snowflake:nth-of-type(9) { left: 90%; animation-delay: 3s, 1.5s; }
+
+    @keyframes snowflakes-fall {
+      0% { top: -10%; }
+      100% { top: 100%; }
+    }
+    @keyframes snowflakes-shake {
+      0% { transform: translateX(0px); }
+      50% { transform: translateX(80px); }
+      100% { transform: translateX(0px); }
+    }
+
+    /* --- LAYOUT --- */
+    .container {
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
       padding: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 10;
     }
 
-    h1 {
-      font-family: 'Nabla', cursive;
-      font-size: 3rem;
+    .main-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
       margin-bottom: 20px;
     }
 
-    .imagen {
-      width: 80%;
-      max-width: 400px;
-      height: auto;
-      margin-bottom: 30px;
-      border-radius: 10px;
+    .text-column { flex: 1; max-width: 550px; }
+    .image-column { flex: 1; display: flex; justify-content: center; }
+
+    /* --- TIPOGRAFÍA ESTILO POSTER --- */
+    h1 {
+      line-height: 1; 
+      margin-bottom: 25px;
     }
 
-  .boton {
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  background-color: #4a8cff;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px; /* Espacio entre el ícono y el texto */
+    /* 1. "Diseño Multimedia" (Cursiva) */
+    .script-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 10px;
+      color: #f4e4d4;
+    }
 
-  /* Efecto 3D */
-  box-shadow: 0px 6px 0px #2d5bbd, 
-              0px 6px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
+    /* 2. Estilo General del Título Grande */
+    .big-text {
+      font-family: 'Alfa Slab One', cursive;
+      /* CORREGIDO: Estaba en 1rem (muy pequeño), lo subí a 4.5rem */
+      font-size: 4.5rem; 
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block; 
+    }
 
-.boton .material-symbols-outlined {
-  font-size: 1.6rem; /* Tamaño del ícono */
-  vertical-align: middle; /* Alinea el ícono verticalmente con el texto */
-}
+    /* 3. COLOR VERDE TURQUESA */
+    .highlight-text {
+      color: #4db6ac; 
+      font-size: 5rem; 
+    }
 
-.boton:active {
-  /* Al presionar, el botón "se hunde" */
-  transform: translateY(6px);
-  box-shadow: 0px 0px 0px #2d5bbd,
-              0px 2px 10px rgba(0, 0, 0, 0.2);
-}
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.4rem;
+    .description {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 450px;
+    }
+
+    /* --- MARCO DE FOTO --- */
+    .image-frame {
+      width: 380px;
+      height: 380px;
+      background-color: #1a3c4d;
+      border-radius: 50%;
+      border: 6px solid #f4e4d4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .mascota-img {
+      width: 85%;
+      height: auto;
+    }
+
+    /* --- BOTÓN ROJO --- */
+    .boton {
+      padding: 18px 45px;
+      font-size: 1.2rem;
+      background-color: #d32f2f; 
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 6px 0 #b71c1c; 
+      transition: transform 0.1s;
+    }
+
+    .boton:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #b71c1c;
+    }
+    
+    a { text-decoration: none; }
+
+    /* --- LOGO Y REGALOS --- */
+    .logo-container {
+      text-align: center;
+      margin-bottom: 70px; 
+    }
+    .logo-inst {
+      max-width: 180px;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+
+    .gifts-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 8px;
+      z-index: 1;
+      padding-bottom: 0;
+    }
+    .gift { border-radius: 4px 4px 0 0; }
+    
+    .g-red { background-color: #d32f2f; height: 40px; width: 40px; }
+    .g-cream { background-color: #f4e4d4; height: 60px; width: 50px; }
+    .g-teal { background-color: #4db6ac; height: 50px; width: 45px; }
+
+    /* --- CELULAR --- */
+    @media (max-width: 900px) {
+      .main-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 30px;
       }
+      .text-column { max-width: 100%; }
+      
+      .script-text { font-size: 2rem; }
+      
+      .big-text { font-size: 3.5rem; line-height: 1.1; }
+      .highlight-text { font-size: 4rem; }
 
-      .boton {
-        font-size: 1rem;
-        padding: 12px 20px;
+      .image-frame {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
       }
+      
+      .description { margin: 20px auto; }
+      .boton { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <h1>¡Bienvenido a la experiencia AR!</h1>
-  <img src="img/mascota.png" alt="Mascota diseno multimedia" class="imagen">
-  <img src="img/dislogo.png" alt="logo ups" class="imagen">
- <a href="pages/nacimiento.html"><button class="boton">
-  <span class="material-symbols-outlined">view_in_ar</span>
-  Entrar en AR
-</button></a>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
+
+  <div class="container">
+    <div class="main-content">
+      
+      <div class="text-column">
+        <h1>
+          <span class="script-text">Diseño Multimedia</span>
+          <span class="big-text highlight-text">PESEBRE</span>
+          <span class="big-text">VIRTUAL</span>
+        </h1>
+        <a href="pages/nacimiento.html">
+          <button class="boton">
+            <span class="material-symbols-outlined">view_in_ar</span>
+            COMENZAR
+          </button>
+        </a>
+      </div>
+
+      <div class="image-column">
+        <div class="image-frame">
+          <img src="img/mascota.png" alt="Mascota" class="mascota-img">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="logo-container">
+      <img src="img/dislogo.png" alt="UPS Logo" class="logo-inst">
+    </div>
+  </div>
+
+  <div class="gifts-container">
+    <div class="gift g-red"></div>
+    <div class="gift g-teal"></div>
+    <div class="gift g-cream"></div>
+    <div class="gift g-red" style="height:30px;"></div>
+  </div>
+
 </body>
 </html>
-
-
