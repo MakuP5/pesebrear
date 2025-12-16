@@ -20,8 +20,55 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow: hidden; /* Importante para la nieve */
+      overflow-x: hidden; /* Importante para la nieve */
       position: relative;
+    }
+
+    /* --- ESTILOS DE LA BARRA CON LOGO --- */
+    header {
+      width: 100%;
+      background-color: #d32f2f; /* Rojo Navideño */
+      padding: 10px 0;
+      z-index: 100;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between; /* Logo izq, menú der */
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .nav-logo {
+        max-width: 200px; /* Logo grande en PC */
+        height: auto;
+        filter: brightness(0) invert(1); /* Blanco */
+        display: block;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      color: #f4e4d4;
+      font-weight: bold;
+      font-size: 0.9rem; /* Letras de barra controladas */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .nav-menu li a:hover {
+      color: #ffffff;
     }
 
     /* --- EFECTO DE NIEVE (CSS PURO) --- */
@@ -64,7 +111,7 @@
       100% { transform: translateX(0px); }
     }
 
-    /* --- LAYOUT --- */
+    /* --- LAYOUT PRINCIPAL --- */
     .container {
       flex: 1;
       display: flex;
@@ -89,57 +136,46 @@
     .text-column { flex: 1; max-width: 550px; }
     .image-column { flex: 1; display: flex; justify-content: center; }
 
-    /* --- TIPOGRAFÍA ESTILO POSTER --- */
+    /* --- TIPOGRAFÍA ESTILO POSTER (PC) --- */
     h1 {
       line-height: 1; 
       margin-bottom: 25px;
     }
 
-    /* 1. "Diseño Multimedia" (Cursiva) */
     .script-text {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.5rem;
+      font-size: 3rem; 
       display: block;
       margin-bottom: 10px;
       color: #f4e4d4;
     }
 
-    /* 2. Estilo General del Título Grande */
     .big-text {
       font-family: 'Alfa Slab One', cursive;
-      /* CORREGIDO: Estaba en 1rem (muy pequeño), lo subí a 4.5rem */
-      font-size: 4.5rem; 
+      font-size: 5rem; 
       text-transform: uppercase;
       letter-spacing: 2px;
       display: block; 
+      line-height: 0.9;
     }
 
-    /* 3. COLOR VERDE TURQUESA */
     .highlight-text {
       color: #4db6ac; 
-      font-size: 5rem; 
-    }
-
-    .description {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      line-height: 1.6;
-      opacity: 0.9;
-      max-width: 450px;
+      font-size: 5.5rem; 
     }
 
     /* --- MARCO DE FOTO --- */
     .image-frame {
-      width: 380px;
-      height: 380px;
+      width: 450px; 
+      height: 450px;
       background-color: #1a3c4d;
       border-radius: 50%;
-      border: 6px solid #f4e4d4;
+      border: 8px solid #f4e4d4;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     }
 
     .mascota-img {
@@ -172,17 +208,7 @@
     
     a { text-decoration: none; }
 
-    /* --- LOGO Y REGALOS --- */
-    .logo-container {
-      text-align: center;
-      margin-bottom: 70px; 
-    }
-    .logo-inst {
-      max-width: 180px;
-      filter: brightness(0) invert(1);
-      opacity: 0.7;
-    }
-
+    /* --- REGALOS --- */
     .gifts-container {
       position: fixed;
       bottom: 0;
@@ -202,43 +228,63 @@
     .g-cream { background-color: #f4e4d4; height: 60px; width: 50px; }
     .g-teal { background-color: #4db6ac; height: 50px; width: 45px; }
 
-    /* --- CELULAR --- */
+    /* --- RESPONSIVE (CELULAR - Ajustes de tamaño) --- */
     @media (max-width: 900px) {
+      .header-content {
+          padding: 0 15px;
+      }
+      .nav-logo {
+          max-width: 160px; /* Logo grande para que se note */
+      }
+      .nav-menu {
+          gap: 15px;
+      }
+      .nav-menu li a {
+          font-size: 0.7rem; /* Letras MENÚ pequeñas */
+      }
+
       .main-content {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 30px;
+        gap: 20px;
       }
       .text-column { max-width: 100%; }
       
-      .script-text { font-size: 2rem; }
-      
-      .big-text { font-size: 3.5rem; line-height: 1.1; }
-      .highlight-text { font-size: 4rem; }
+      /* --- TAMAÑOS REDUCIDOS PARA MÓVIL --- */
+      .script-text { font-size: 1.8rem; } /* Cursiva más pequeña */
+      .big-text { font-size: 2.5rem; line-height: 1.1; } /* Título reducido para que quepa */
+      .highlight-text { font-size: 2.8rem; } /* Destacado reducido */
 
       .image-frame {
-        width: 280px;
-        height: 280px;
+        width: 260px;
+        height: 260px;
         margin: 0 auto;
+        border-width: 6px;
       }
       
-      .description { margin: 20px auto; }
-      .boton { width: 100%; justify-content: center; }
+      .boton { width: 90%; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <div class="snowflake">❅</div>
-  <div class="snowflake">❅</div>
-  <div class="snowflake">❆</div>
-  <div class="snowflake">❄</div>
-  <div class="snowflake">❅</div>
-  <div class="snowflake">❆</div>
-  <div class="snowflake">❄</div>
-  <div class="snowflake">❅</div>
-  <div class="snowflake">❆</div>
-  <div class="snowflake">❄</div>
+  <header>
+    <div class="header-content">
+        <a href="index.html">
+            <img src="img/dislogo.png" alt="UPS Logo" class="nav-logo">
+        </a>
+        <nav>
+        <ul class="nav-menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="galeria.html">GALERÍA</a></li>
+            <li><a href="creditos.html">CRÉDITOS</a></li>
+        </ul>
+        </nav>
+    </div>
+  </header>
+
+  <div class="snowflake">❅</div><div class="snowflake">❅</div><div class="snowflake">❆</div><div class="snowflake">❄</div><div class="snowflake">❅</div>
+  <div class="snowflake">❆</div><div class="snowflake">❄</div><div class="snowflake">❅</div><div class="snowflake">❆</div><div class="snowflake">❄</div>
 
   <div class="container">
     <div class="main-content">
@@ -263,10 +309,6 @@
         </div>
       </div>
 
-    </div>
-
-    <div class="logo-container">
-      <img src="img/dislogo.png" alt="UPS Logo" class="logo-inst">
     </div>
   </div>
 
